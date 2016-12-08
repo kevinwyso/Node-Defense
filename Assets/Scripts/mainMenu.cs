@@ -20,6 +20,9 @@ public class mainMenu : MonoBehaviour {
 	[Header ("Difficulty Screen")]
 	public GameObject diffUI;
 
+	[Header ("How to Screen")]
+	public GameObject howToUI;
+
 	[Header ("Save Texts")]
 	public Text save1;
 	public Text save2;
@@ -150,6 +153,14 @@ public class mainMenu : MonoBehaviour {
 
 	public void closeSave(){
 		closeScreen (saveUI);
+	}
+
+	public void openHow(){
+		openScreen (howToUI);
+	}
+
+	public void closeHow(){
+		closeScreen (howToUI);
 	}
 
 	public void openDiff(){
