@@ -1,0 +1,26 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\mainMenu.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Tower.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BuildManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\waveSpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\gameStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\gameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\playerStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\mainMenu.cs" Line="44" Column="7" />
+      <File FileName="Assets\Scripts\activeBuffs.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NodeUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\cameraController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemyUpdate.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\diffMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Node.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

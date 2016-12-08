@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{65FB61B7-B7EA-135F-9384-F456AB910E34}") = "Tower Defense Test", "Assembly-CSharp.csproj", "{1FD3D681-304A-05CB-E46F-C1997F84D907}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FD3D681-304A-05CB-E46F-C1997F84D907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD3D681-304A-05CB-E46F-C1997F84D907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD3D681-304A-05CB-E46F-C1997F84D907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD3D681-304A-05CB-E46F-C1997F84D907}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

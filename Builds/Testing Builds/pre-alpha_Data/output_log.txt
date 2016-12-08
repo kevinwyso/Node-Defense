@@ -1,0 +1,36 @@
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon R9 200 Series (ID=0x67b1)
+    Vendor:   ATI
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.149 seconds
+Platform assembly: D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\Builds\Testing Builds\pre-alpha_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 5760x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.639561 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 5064 -> priority: 1 
+C:/Users/kevin/AppData/LocalLow/DefaultCompany/Tower Defense Test
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Saved
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
