@@ -22,7 +22,7 @@ public class cameraController : MonoBehaviour {
 			return;
 
 		//Lets the user stop the camera from moving
-		if (Input.GetKeyDown (KeyCode.Escape))
+		if (Input.GetKeyDown (KeyCode.Tab))
 			move = !move;
 		
 		//Stop movement if disabled

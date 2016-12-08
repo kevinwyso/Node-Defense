@@ -43,6 +43,15 @@ public class BuildManager : MonoBehaviour {
 		setMessage(" ");
 	}
 
+	void Update(){
+		
+		//Deselect a node when pressing Escape
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			deselectNode ();
+		}
+
+	}
+
 	//Called from the Shop, sets the tower to be ready to build
 	public void selectTowerToBuild(towerBlueprint Tower){
 		towerToBuild = Tower; //Tower to build is the passed in tower from the shop
