@@ -1,0 +1,6 @@
+{
+  "name": "Node Defense",
+  "tagline": "First Tower Defense from Siege Studios. Features 60 possible towers, 36 Skills to use. Endlessly merciless waves.",
+  "body": "### Welcome to Node Defense\r\nInsert description\r\n\r\n### Authors and Contributors\r\nCreation began in November, 2016 by Kevin Wysoczynski @KevinWyso\r\n\r\nSpecial thanks to Asbjørn Thirslund the creator of [Brackey's Tutorials] (https://www.youtube.com/user/Brackeys) which helped me both learn how to use Unity and code in C# as well as providing the basis for a good amount of the mechanics for this tower defense. \r\n\r\n### Screen Shots\r\nInsert in/out of game screen shots\r\n\r\n### Support or Contact\r\nHaving trouble with Node Defense? Contact me at **kevin.wyso.gamedesign@gmail.com** and I’ll help you sort it out.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
