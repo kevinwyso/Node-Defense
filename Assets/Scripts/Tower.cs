@@ -477,10 +477,8 @@ public class Tower : MonoBehaviour {
 		if (isLaser)
 			bonusDOT += (DOT * node.bonusDamageAmount);
 		else{
-			Projectile p = projectilePF.GetComponent<Projectile> ();
 			addBonusProjDamage (node.bonusDamageAmount);
 		}
-			
 	}
 
 	//Add bonus range to the tower if the tower is on a special node

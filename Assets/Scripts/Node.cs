@@ -23,6 +23,7 @@ public class Node : MonoBehaviour {
 
 	[Header ("Setup")]
 	BuildManager buildManager;
+	public GameObject rangeIndicator;
 
 	[Header ("Optional Parameter")]
 	public GameObject towerHere = null; //Tower on this node
@@ -58,8 +59,11 @@ public class Node : MonoBehaviour {
 			return;
 
 		//Change color of node to note it is being hovered
-		if (buildManager.hasMoney || (isSpecial && buildManager.getTowerToBuild().prefab.GetComponent<Tower>().towerTier == 1))
+		if (buildManager.hasMoney || (isSpecial && buildManager.getTowerToBuild ().prefab.GetComponent<Tower> ().towerTier == 1)) {
 			rend.material.color = hoverColor; 
+			rangeIndicator.transform.localScale = new Vector3(buildManager.getTowerToBuild ().prefab.GetComponent<Tower> ().range/2f, 0, buildManager.getTowerToBuild ().prefab.GetComponent<Tower> ().range/2f);
+			rangeIndicator.SetActive (true);
+		}
 		else
 			rend.material.color = notEnoughMoneyColor;
 	}
@@ -67,6 +71,8 @@ public class Node : MonoBehaviour {
 	//Called when mouse leaves the object
 	void OnMouseExit(){
 		rend.material.color = startColor; //Change color back to normal
+		rangeIndicator.transform.localScale = new Vector3(0.25f, 0, 0.25f);
+		rangeIndicator.SetActive (false);
 	}
 
 	//When mouse clicked
@@ -78,6 +84,10 @@ public class Node : MonoBehaviour {
 		//if something is built here
 		if(towerHere != null){ 
 			buildManager.selectNode (this); //Set selected node
+
+			//Remove Range Indicator
+			rangeIndicator.transform.localScale = new Vector3(0.25f, 0, 0.25f);
+			rangeIndicator.SetActive (false);
 			return;
 		}
 
@@ -88,6 +98,10 @@ public class Node : MonoBehaviour {
 
 		//Build Turret and set the tower component
 		buildManager.buildTowerOn(this);
+
+		//Remove Range Indicator
+		rangeIndicator.transform.localScale = new Vector3(0.25f, 0, 0.25f);
+		rangeIndicator.SetActive (false);
 
 		//If tower successfully built then set t = to it
 		if(towerHere != null)

@@ -5,11 +5,16 @@ public class gameManager : MonoBehaviour {
 
 	public GameObject gameoverUI;
 	public GameObject yes, no, toMenu;
+	[Header("Speed")]
+	public GameObject speedUp;
+	public GameObject slowDown;
 
 	[HideInInspector]
 	public static bool gameEnded;
 
 	void Awake(){
+		Application.runInBackground = true; //Keep the game playing even if it loses focus
+
 		gameEnded = false; //Need to do this on scene start or static variable will be preserved
 		gameObject.GetComponent<activeBuffs> ().applyNodeBuffs(); //Apply node buffs at start
 	}
@@ -31,6 +36,17 @@ public class gameManager : MonoBehaviour {
 			endGame();
 		}
 
+		//Debug Statement
+		if(Input.GetKeyDown("p")){
+			if(Time.timeScale == 1.0f)
+				Time.timeScale *= 3f;
+		}
+
+		//Debug Statement
+		if(Input.GetKeyDown("o")){
+	
+		}
+
 		if (gameStats.lives <= 0) {
 			endGame ();
 		}
@@ -42,12 +58,20 @@ public class gameManager : MonoBehaviour {
 		gameoverUI.SetActive(true);
 
 		//Save the players stats
-		playerStats.current.addExpPerDiff (gameStats.waves);
+		playerStats.current.addExpPerDiff (getLastWave());
 		playerStats.current.setLevel ();
 
 		//IF the player is using a saved file, save it at that index, if not, don't save
 		if(playerStats.saveIndex >= 0)
 			SaveLoad.Save (playerStats.saveIndex);
+
+		Time.timeScale = 1f;
+
+	}
+
+	//Return the most recently cleared wave
+	public int getLastWave(){
+		return waveSpawner.waves [0].getWaveNumber();
 	}
 
 	//Confirm the user wants to use the menu
@@ -64,5 +88,18 @@ public class gameManager : MonoBehaviour {
 		toMenu.SetActive (true);
 	}
 
+	public void incSpeed(){
+		speedUp.SetActive (false);
+		slowDown.SetActive (true);
+		Time.timeScale *= 3f;
+	}
+
+	public void decSpeed(){
+		speedUp.SetActive (true);
+		slowDown.SetActive (false);
+		Time.timeScale /= 3f;
+	}
 		
+
+
 }

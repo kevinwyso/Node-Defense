@@ -39,6 +39,9 @@ public class NodeUI : MonoBehaviour {
 		//Update kill count while tower is selected
 		if (target != null)
 			killCount.text = target.towerHere.GetComponent<Tower> ().killCount.ToString ();
+
+		if(buildManager.isSelected)
+			showStats(buildManager.getTowerToBuild().prefab.GetComponent<Tower>());
 	}
 
 	//Set the target node for the UI to show up above, passed in from buildManager

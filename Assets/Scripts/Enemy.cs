@@ -158,6 +158,7 @@ public class Enemy : MonoBehaviour {
 		}
 			
 		waveSpawner.enemiesAlive--; //Reduce the enemies alive count
+		waveSpawner.enemiesKilled++;
 		mostRecentlyHitBy.killCount++;
 
 		//If the enemy has a Bomb debuff then explode the bomb

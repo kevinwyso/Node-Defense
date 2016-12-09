@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\skillMenu.cs" />
      <Compile Include="Assets\Scripts\skillTree.cs" />
      <Compile Include="Assets\Scripts\towerBlueprint.cs" />
+     <Compile Include="Assets\Scripts\wave.cs" />
      <Compile Include="Assets\Scripts\waveSpawner.cs" />
      <Compile Include="Assets\Scripts\waypoints.cs" />
  <Reference Include="UnityEngine.UI">

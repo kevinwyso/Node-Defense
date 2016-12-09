@@ -47,7 +47,10 @@ public class BuildManager : MonoBehaviour {
 		
 		//Deselect a node when pressing Escape
 		if(Input.GetKeyDown(KeyCode.Escape)){
-			deselectNode ();
+			if (selectedNode != null)
+				deselectNode ();
+			else if (towerToBuild != null)
+				towerToBuild = null;
 		}
 
 	}

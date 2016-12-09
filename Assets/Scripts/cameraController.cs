@@ -9,7 +9,7 @@ public class cameraController : MonoBehaviour {
 	public float minY, maxY, minPan, maxPan; //Min/Max distances to Pan
 
 	private Vector3 origin; //Original location of camera
-	private bool move = true; //Movement disable/enabler
+	private bool move = false; //Movement disable/enabler
 
 	void Start(){
 		origin = transform.position; //Origin = where the camera starts

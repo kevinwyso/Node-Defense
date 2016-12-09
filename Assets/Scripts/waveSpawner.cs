@@ -6,6 +6,9 @@ using System.Collections;
 public class waveSpawner : MonoBehaviour {
 
 	public static int enemiesAlive;
+	public static int totalEnemiesSpawned;
+	public static int enemiesKilled;
+	public static List<wave> waves;
 
 	[Header ("Timer Attributes")]
 	public float waveTimer; //Time between waves
@@ -34,6 +37,9 @@ public class waveSpawner : MonoBehaviour {
 
 	//Init
 	void Start(){
+		waves = new List<wave> ();
+		totalEnemiesSpawned = 0; //Reset enemies spawned count
+		enemiesKilled = 0; //Reset Enemies killed count
 		enemiesAlive = 0; //Reset enemies alive before the game starts just as a failsafe
 		enemyGO = GameObject.Find ("Enemies"); //Find/Set the Gameobject which will store the enemy list
 	}
@@ -55,6 +61,9 @@ public class waveSpawner : MonoBehaviour {
 		else
 			nextWave.interactable = true;
 
+		//Remove waves from the waves list
+		cleanUpWaves ();
+
 		//If there are still enemies on the field, don't start counting down
 		if (enemiesAlive > 0)
 			return;
@@ -70,7 +79,7 @@ public class waveSpawner : MonoBehaviour {
 	public void spawnFromButton(){
 		if(countdown >= 0f && !spawning)
 			StartCoroutine (spawnWave ());
-		gameStats.money += (int) (earlyStartBonus * countdown * waveNumber) + 10;
+		gameStats.money += (int) (earlyStartBonus * countdown * waveNumber) + 10; //Grant the player bonus money for starting a wave early
 	}
 
 	//Spawn a wave
@@ -88,6 +97,8 @@ public class waveSpawner : MonoBehaviour {
 		//Order the enemies in some random grouping fashion
 		orderEnemies ();
 
+		waves.Add(new wave(waveNumber, enemyList.Count));
+
 		//Spawn the enemies in the wave
 		foreach (Transform enemy in enemyList) {
 			spawnEnemy (enemy);
@@ -100,6 +111,9 @@ public class waveSpawner : MonoBehaviour {
 		//Reset the countdown after a wave has spawned and give up the spawning lock
 		countdown = waveTimer;
 		spawning = false;
+
+		//Increase enemy density each round to a minimum of 0.03
+		enemyTimer = Mathf.Clamp((enemyTimer - 0.003f), 0.03f, 0.5f);
 
 	}
 
@@ -136,5 +150,19 @@ public class waveSpawner : MonoBehaviour {
 		totalCount = 0;
 	}
 		
+	//Remove waves from the wave list if the correct amount of enemies have been killed
+	void cleanUpWaves(){
+		for(int i = waves.Count-1; i >= 0; i--) {
+			wave w = waves [i];
+			//print (w.ToString());
+			if (enemiesKilled >= w.getSpawned ())
+				waves.Remove (w);
+		}
+	}
+
+	//Return the most recently cleared wave
+	public static int getLastWave(){
+		return waveSpawner.waves [0].getWaveNumber();
+	}
 
 }
