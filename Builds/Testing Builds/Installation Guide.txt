@@ -1,0 +1,12 @@
+Author: Kevin Wysoczynski
+
+Github: KevinWyso
+
+Extract the data folder and the setup file to the same folder.
+Run the setup file. 
+Follow the on-screen instructions.
+Play.
+
+Please send feedback to kevin.wyso.gamedesign@gmail.com
+
+Thank you for playing!
