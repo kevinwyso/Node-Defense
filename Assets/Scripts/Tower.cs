@@ -385,9 +385,19 @@ public class Tower : MonoBehaviour {
 		}
 
 		//Target selection
-		//Just pick the target that entered the range first and stay with it
-		if (enemyList.Count > 0 && !targetHighHealth)
-			target = enemyList [0];
+		//Pick the target with the highest distance travelled (closest to end point)
+		if (enemyList.Count > 0 && !targetHighHealth) {
+			float highestDistance = Mathf.NegativeInfinity;
+			Transform highestDistanceTransform = null;
+			foreach (Transform t in enemyList) {
+				Enemy e = t.GetComponent<Enemy> ();
+				if (e.distanceTravelled > highestDistance) {
+					highestDistance = e.distanceTravelled;
+					highestDistanceTransform = t;
+				}
+			}
+			target = highestDistanceTransform;
+		}
 		//Select the target with the highest hp (for snipers and for percent dmg towers)
 		else if (enemyList.Count > 0 && targetHighHealth) {
 			float highestHealth = Mathf.NegativeInfinity;

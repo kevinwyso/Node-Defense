@@ -54,10 +54,14 @@ public class Enemy : MonoBehaviour {
 	[Header ("Debuffs")]
 	public List<debuff> debuffList  = new List<debuff> (); //Debuffs that this enemy possesses
 
-	[HideInInspector]
+	//[HideInInspector]
 	//Current values for health/move speed/Worth throughout game, CHANGED WHILE ALIVE
-	public float health, moveSpeed, resistStrength;
+	[Header ("Current Stats")]
+	public float health;
+	public float moveSpeed; 
+	public float resistStrength;
 	public int worth;
+	public float distanceTravelled;
 
 	private Tower mostRecentlyHitBy; //Which tower most recently hit this enemy
 	private bool isConfused = false; //Is this enemy confused

@@ -6,7 +6,7 @@ using System.Collections;
 public class diffMenu : MonoBehaviour {
 
 	//Multiplier values for experience gains after a game ends
-	public static float easyEnemyMult = 0.3f, easyMapMult = 0.8f, medEnemyMult = 0.7f, medMapMult = 1f, hardEnemyMult = 1f, hardMapMult = 1.2f;
+	public static float easyEnemyMult = 0.6f, easyMapMult = 0.9f, medEnemyMult = 1f, medMapMult = 1f, hardEnemyMult = 1.3f, hardMapMult = 1.2f;
 
 	[Header ("Buttons")]
 	public Button start;

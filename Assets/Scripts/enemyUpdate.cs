@@ -56,6 +56,8 @@ public class enemyUpdate : MonoBehaviour {
 		if (enemy.heals)
 			enemy.selfHeal ();
 
+		//Add to the enemy's distance travelled
+		enemy.distanceTravelled += enemy.moveSpeed;
 	}
 
 	//Set the enemy to head toward the next waypoint

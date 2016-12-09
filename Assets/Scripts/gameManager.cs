@@ -4,6 +4,7 @@ using System.Collections;
 public class gameManager : MonoBehaviour {
 
 	public GameObject gameoverUI;
+	public GameObject yes, no, toMenu;
 
 	[HideInInspector]
 	public static bool gameEnded;
@@ -48,5 +49,20 @@ public class gameManager : MonoBehaviour {
 		if(playerStats.saveIndex >= 0)
 			SaveLoad.Save (playerStats.saveIndex);
 	}
+
+	//Confirm the user wants to use the menu
+	public void openConfirmation(){
+		yes.SetActive (true);
+		no.SetActive (true);
+		toMenu.SetActive (false);
+	}
+
+	//Close in the even that the user does not want to go to the menu
+	public void closeConfirmation(){
+		yes.SetActive (false);
+		no.SetActive (false);
+		toMenu.SetActive (true);
+	}
+
 		
 }
