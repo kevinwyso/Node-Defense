@@ -107,13 +107,13 @@ public class playerStats{
 	*/
 
 	//Function returns how much exp required for the next level up
-	//Each successive level has an increasing difference of 5
-	//     5, 15, 30, 50
-	//      10  15  20
-	//        5    5
-	//Formula: 2.5n^2 + 2.5n = exp;
+	//Each successive level has an increasing difference of 2
+	//     2, 6, 12, 20
+	//       4  6  8
+	//         2 2
+	//Formula: n^2 - n = exp;
 	public int getLevelFunction(){
-		return (int) Mathf.Floor((float)quadFormSolve(2.5f,2.5f,-exp, true));
+		return (int) Mathf.Floor((float)quadFormSolve(1f,-1f,-exp, true));
 	}
 
 	//Solve a quadratic equation for finding the level 
