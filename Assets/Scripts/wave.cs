@@ -21,7 +21,7 @@ public class wave {
 		return waveNumber;
 	}
 
-	public string ToString(){
+	public override string ToString(){
 		return "Wave Number: " + waveNumber + "\nSpawned Total: " + totalEnemiesSpawned;
 	}
 
