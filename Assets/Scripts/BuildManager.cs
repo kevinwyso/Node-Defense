@@ -26,6 +26,7 @@ public class BuildManager : MonoBehaviour {
 	//PROPERTIES : Only GETS something
 	public bool isSelected { get {return towerToBuild != null;} }  //Is there a tower currently selected?
 	public bool hasMoney { get {return gameStats.money >= towerToBuild.cost;}} //Does the player have enough money to buy the tower they chose?
+	public bool hasMoneySpecial { get {return gameStats.money >= Mathf.Ceil(towerToBuild.cost / 2);}} //Does the player have enough money to buy the tower they chose?
 
 	//Happens before start
 	void Awake(){
@@ -63,19 +64,19 @@ public class BuildManager : MonoBehaviour {
 
 	//Called from Node, builds the tower on the Node passed in
 	public void buildTowerOn(Node node){
-		bool free = false; //boolean to check if tower is free
+		bool specialCost = false; //boolean to check if tower is specialCost
 		int tempSpent = 0; //Help store 'spent on this tower' info
 		int tempKills = 0;
 		float tempCountdown = 0;
 		List<Transform> tempEnemyList = new List<Transform>();
 
 
-		//If the tower is basic and will be built on a special node, then it is free
+		//If the tower is basic and will be built on a special node, then it is specialCost
 		if (towerToBuild.prefab.GetComponent<Tower> ().towerTier == 1 && node.isSpecial)
-			free = true;
+			specialCost = true;
 
 		//Check if the player has enough money to build the selected tower
-		if (gameStats.money < towerToBuild.cost && !free) {
+		if ((gameStats.money < towerToBuild.cost && specialCost == false)|| (specialCost == true && gameStats.money < Mathf.CeilToInt(towerToBuild.cost / 2))) {
 			setMessage( "Not enough money to build this tower!");
 			return;
 		}
@@ -108,9 +109,13 @@ public class BuildManager : MonoBehaviour {
 
 
 		//If the tower costed money apply this tower's stats/players money
-		if(!free){
+		if (!specialCost) {
 			gameStats.money -= towerToBuild.cost; 
 			node.t.spentOnThisTower = tempSpent + towerToBuild.cost; //Update the sell for cost
+		} else {
+			//On a special node
+			gameStats.money -= Mathf.CeilToInt(towerToBuild.cost / 2);
+			node.t.spentOnThisTower = tempSpent + Mathf.CeilToInt(towerToBuild.cost / 2); //Update the sell for cost
 		}
 
 		applyUpgradeDiscount (t);

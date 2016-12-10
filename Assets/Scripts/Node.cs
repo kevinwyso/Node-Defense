@@ -59,7 +59,7 @@ public class Node : MonoBehaviour {
 			return;
 
 		//Change color of node to note it is being hovered
-		if (buildManager.hasMoney || (isSpecial && buildManager.getTowerToBuild ().prefab.GetComponent<Tower> ().towerTier == 1)) {
+		if (buildManager.hasMoney || (isSpecial && buildManager.hasMoneySpecial && buildManager.getTowerToBuild ().prefab.GetComponent<Tower> ().towerTier == 1) ) {
 			rend.material.color = hoverColor; 
 			rangeIndicator.transform.localScale = new Vector3(buildManager.getTowerToBuild ().prefab.GetComponent<Tower> ().range/2f, 0, buildManager.getTowerToBuild ().prefab.GetComponent<Tower> ().range/2f);
 			rangeIndicator.SetActive (true);

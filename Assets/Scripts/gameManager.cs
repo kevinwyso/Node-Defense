@@ -20,7 +20,7 @@ public class gameManager : MonoBehaviour {
 	}
 
 	void Start(){
-		playerStats.current.printBuffs ();
+		//playerStats.current.printBuffs ();
 		gameObject.GetComponent<activeBuffs> ().applyEconBuffs (); //Apply econ buffs at start but after Node buffs (can't change gameStats before they are created)
 	}
 
