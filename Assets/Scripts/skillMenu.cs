@@ -28,4 +28,9 @@ public class skillMenu : MonoBehaviour {
 			skillCounts [i].text = playerStats.current.getSkillPointsUsed () [i].ToString();
 		}
 	}
+
+	public void resetPoints(){
+		playerStats.current.resetSkills ();
+	}
+
 }

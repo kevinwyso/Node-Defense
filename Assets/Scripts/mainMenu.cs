@@ -56,13 +56,13 @@ public class mainMenu : MonoBehaviour {
 		//If player has played a game using the New Player name without saving, show their stats, other wise they've just started the game and set their temp stats = to a new player
 		if(playerStats.current != null){
 			if (playerStats.current.getExp () == 0)
-				tempStats = new playerStats ("New Player", 0, 0, 0, new int[] { 0, 0, 0, 0, 0, 0 }, getEmptyBuffMatrix (6, 6)); //When the user starts the game, set up a new player and allow them to load or save the current state
+				tempStats = new playerStats ("New Player", 0, 0, 0, new int[] { 0, 0, 0, 0, 0, 0 }, playerStats.getEmptyBuffMatrix (6, 6)); //When the user starts the game, set up a new player and allow them to load or save the current state
 			else {
 				showStats ();
 				setLoadText (playerStats.saveIndex);
 			}
 		} else {
-				tempStats = new playerStats ("New Player", 0, 0, 0, new int[] {0,0,0,0,0,0}, getEmptyBuffMatrix(6,6));
+				tempStats = new playerStats ("New Player", 0, 0, 0, new int[] {0,0,0,0,0,0}, playerStats.getEmptyBuffMatrix(6,6));
 		}
 
 		InvokeRepeating("SlowUpdate", 0.1f, 2f); //Update the level of the user (but slowly)
@@ -133,7 +133,7 @@ public class mainMenu : MonoBehaviour {
 	//Delete the save file by putting a new game file in that slot
 	public void deleteSave(int index){
 		if (SaveLoad.savedGames.Count > index) {
-			SaveLoad.savedGames[index] = new playerStats ("New Player", 0, 0, 0, new int[] {0,0,0,0,0,0}, getEmptyBuffMatrix(6,6));
+			SaveLoad.savedGames[index] = new playerStats ("New Player", 0, 0, 0, new int[] {0,0,0,0,0,0}, playerStats.getEmptyBuffMatrix(6,6));
 			Load (index);
 			textToChange.text = "Load: " + playerStats.current.saveName; //Show the name in the appropriate load box
 		}
@@ -222,15 +222,5 @@ public class mainMenu : MonoBehaviour {
 	* Skill functions
 	*/
 
-	//Returns the matrix of skills and sets them to inactive (false)
-	bool[,] getEmptyBuffMatrix(int rows, int cols){
-		bool[,] matrix = new bool[rows,cols];
-		for(int i = 0; i < matrix.GetLength(0); i++){
-			for (int j = 0; j < matrix.GetLength(1); j++) {
-				matrix [i,j] = false;
-			}
-		}
-		return matrix;
-	}
 
 }

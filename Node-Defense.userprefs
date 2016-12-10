@@ -1,0 +1,29 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\waveSpawner.cs">
+    <Files>
+      <File FileName="Assets\Scripts\mainMenu.cs" Line="162" Column="20" />
+      <File FileName="Assets\Scripts\Tower.cs" Line="95" Column="74" />
+      <File FileName="Assets\Scripts\BuildManager.cs" Line="49" Column="40" />
+      <File FileName="Assets\Scripts\gameManager.cs" Line="61" Column="50" />
+      <File FileName="Assets\Scripts\cameraController.cs" Line="19" Column="18" />
+      <File FileName="Assets\Scripts\diffMenu.cs" Line="12" Column="22" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="161" Column="31" />
+      <File FileName="Assets\Scripts\enemyUpdate.cs" Line="46" Column="12" />
+      <File FileName="Assets\Scripts\Gameover.cs" Line="10" Column="2" />
+      <File FileName="Assets\Scripts\playerStats.cs" Line="113" Column="17" />
+      <File FileName="Assets\Scripts\SaveLoad.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\waveSpawner.cs" Line="157" Column="6" />
+      <File FileName="Assets\Scripts\gameStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NodeUI.cs" Line="45" Column="3" />
+      <File FileName="Assets\Scripts\Node.cs" Line="87" Column="4" />
+      <File FileName="Assets\Scripts\activeBuffs.cs" Line="355" Column="1" />
+      <File FileName="Assets\Scripts\Shop.cs" Line="34" Column="52" />
+      <File FileName="Assets\Scripts\wave.cs" Line="15" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

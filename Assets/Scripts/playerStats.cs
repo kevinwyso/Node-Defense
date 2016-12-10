@@ -100,6 +100,12 @@ public class playerStats{
 	public bool[,] getBuffMatrix(){
 		return buffsActive;
 	}
+
+	public void resetSkills(){
+		skillPointsAllocated = new int[] { 0, 0, 0, 0, 0, 0 };
+		buffsActive = getEmptyBuffMatrix (6,6);
+	}
+
 	//End Skill Functions
 	 
 	/*
@@ -149,6 +155,17 @@ public class playerStats{
 			}
 			Debug.Log (row);
 		}
+	}
+
+	//Returns the matrix of skills and sets them to inactive (false)
+	public static bool[,] getEmptyBuffMatrix(int rows, int cols){
+		bool[,] matrix = new bool[rows,cols];
+		for(int i = 0; i < matrix.GetLength(0); i++){
+			for (int j = 0; j < matrix.GetLength(1); j++) {
+				matrix [i,j] = false;
+			}
+		}
+		return matrix;
 	}
 
 }

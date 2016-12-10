@@ -58,21 +58,15 @@ public class gameManager : MonoBehaviour {
 		gameoverUI.SetActive(true);
 
 		//Save the players stats
-		playerStats.current.addExpPerDiff (getLastWave());
+		playerStats.current.addExpPerDiff (waveSpawner.getLastWave());
 		playerStats.current.setLevel ();
 
 		//IF the player is using a saved file, save it at that index, if not, don't save
 		if(playerStats.saveIndex >= 0)
 			SaveLoad.Save (playerStats.saveIndex);
 
-		Time.timeScale = 1f;
-
 	}
-
-	//Return the most recently cleared wave
-	public int getLastWave(){
-		return waveSpawner.waves [0].getWaveNumber();
-	}
+		
 
 	//Confirm the user wants to use the menu
 	public void openConfirmation(){
