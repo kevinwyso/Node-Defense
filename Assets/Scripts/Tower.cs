@@ -73,7 +73,7 @@ public class Tower : MonoBehaviour {
 
 	[HideInInspector]
 	public int spentOnThisTower, killCount = 0;
-	[HideInInspector]
+	//[HideInInspector]
 	public bool nextTierUnlocked; //Tells the node ui to enable or disable the upgrade section 
 
 	private float bonusDamageToDeal;

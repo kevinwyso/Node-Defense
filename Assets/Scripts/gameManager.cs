@@ -20,6 +20,7 @@ public class gameManager : MonoBehaviour {
 	}
 
 	void Start(){
+		playerStats.current.printBuffs ();
 		gameObject.GetComponent<activeBuffs> ().applyEconBuffs (); //Apply econ buffs at start but after Node buffs (can't change gameStats before they are created)
 	}
 
@@ -64,7 +65,6 @@ public class gameManager : MonoBehaviour {
 		//IF the player is using a saved file, save it at that index, if not, don't save
 		if(playerStats.saveIndex >= 0)
 			SaveLoad.Save (playerStats.saveIndex);
-
 	}
 		
 

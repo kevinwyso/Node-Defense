@@ -104,6 +104,7 @@ public class playerStats{
 	public void resetSkills(){
 		skillPointsAllocated = new int[] { 0, 0, 0, 0, 0, 0 };
 		buffsActive = getEmptyBuffMatrix (6,6);
+		printBuffs ();
 	}
 
 	//End Skill Functions
