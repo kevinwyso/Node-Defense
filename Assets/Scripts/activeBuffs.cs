@@ -82,27 +82,27 @@ public class activeBuffs : MonoBehaviour{
 	public void applyTurretBuffs(Tower tower){
 		bool[,] matrix = playerStats.current.getBuffMatrix ();
 
-		turretTier2 (matrix, tower);
 		turretBonusDamage (matrix, tower);
+		turretTier2 (matrix, tower);
 		turretTier3 (matrix, tower);
 		turretBonusRange (matrix, tower);
 		turretTier4 (matrix, tower);
 		turretDoubleRoF (matrix, tower);
 	}
 
-	public void turretTier2(bool[,] matrix, Tower tower){
+	public void turretBonusDamage(bool[,] matrix, Tower tower){
 		if (matrix [0, 0]) {
+			tower.addBonusProjDamage(turretDamageBonus);
+		}
+	}
+	
+	public void turretTier2(bool[,] matrix, Tower tower){
+		if (matrix [0, 1]) {
 			if (tower.towerTier == 1)
 				tower.nextTierUnlocked = true;
 		}
 	}
 		
-	public void turretBonusDamage(bool[,] matrix, Tower tower){
-		if (matrix [0, 1]) {
-			tower.addBonusProjDamage(turretDamageBonus);
-		}
-	}
-
 	public void turretTier3(bool[,] matrix, Tower tower){
 		if (matrix [0, 2]) {
 			if (tower.towerTier == 2)
@@ -137,24 +137,24 @@ public class activeBuffs : MonoBehaviour{
 	public void applyRocketBuffs(Tower tower){
 		bool[,] matrix = playerStats.current.getBuffMatrix ();
 
-		rocketTier2 (matrix, tower);
 		rocketBonusDamage (matrix, tower);
+		rocketTier2 (matrix, tower);
 		rocketTier3 (matrix, tower);
 		rocketBonusAOE (matrix, tower);
 		rocketTier4 (matrix, tower);
 		rocketIgnoreResists(matrix, tower);
 	}
 
-	public void rocketTier2(bool[,] matrix, Tower tower){
+	public void rocketBonusDamage(bool[,] matrix, Tower tower){
 		if (matrix [1, 0]) {
-			if (tower.towerTier == 1)
-				tower.nextTierUnlocked = true;
+			tower.addBonusProjDamage (rocketDamageBonus);
 		}
 	}
-
-	public void rocketBonusDamage(bool[,] matrix, Tower tower){
+	
+	public void rocketTier2(bool[,] matrix, Tower tower){
 		if (matrix [1, 1]) {
-			tower.addBonusProjDamage (rocketDamageBonus);
+			if (tower.towerTier == 1)
+				tower.nextTierUnlocked = true;
 		}
 	}
 
@@ -193,27 +193,27 @@ public class activeBuffs : MonoBehaviour{
 	public void applyLaserBuffs(Tower tower){
 		bool[,] matrix = playerStats.current.getBuffMatrix ();
 
-		laserTier2 (matrix, tower);
 		laserBonusDamage (matrix, tower);
+		laserTier2 (matrix, tower);
 		laserTier3 (matrix, tower);
 		laserBonusSlow (matrix, tower);
 		laserTier4 (matrix, tower);
 		laserBonusSlow2(matrix, tower);
 	}
 
-	public void laserTier2(bool[,] matrix, Tower tower){
-		if (matrix [2, 0]) {
-			if (tower.towerTier == 1)
-				tower.nextTierUnlocked = true;
-		}
-	}
-
 	public void laserBonusDamage(bool[,] matrix, Tower tower){
-		if (matrix [2, 1]) {
+		if (matrix [2, 0]) {
 			tower.bonusDOT = (tower.baseDOT * laserDamageBonus);
 		}
 	}
 
+	public void laserTier2(bool[,] matrix, Tower tower){
+		if (matrix [2, 1]) {
+			if (tower.towerTier == 1)
+				tower.nextTierUnlocked = true;
+		}
+	}
+		
 	public void laserTier3(bool[,] matrix, Tower tower){
 		if (matrix [2, 2]) {
 			if (tower.towerTier == 2)
@@ -251,26 +251,27 @@ public class activeBuffs : MonoBehaviour{
 	public void applySniperBuffs(Tower tower){
 		bool[,] matrix = playerStats.current.getBuffMatrix ();
 
-		sniperTier2 (matrix, tower);
 		sniperBonusDamage (matrix, tower);
+		sniperTier2 (matrix, tower);
 		sniperTier3 (matrix, tower);
 		sniperBonusRoF(matrix, tower);
 		sniperTier4 (matrix, tower);
 		sniperKillCounts(matrix, tower);
 	}
 
-	public void sniperTier2(bool[,] matrix, Tower tower){
+	public void sniperBonusDamage(bool[,] matrix, Tower tower){
 		if (matrix [3, 0]) {
+			tower.addBonusProjDamage(sniperDamageBonus);
+		}
+	}
+
+	public void sniperTier2(bool[,] matrix, Tower tower){
+		if (matrix [3, 1]) {
 			if (tower.towerTier == 1)
 				tower.nextTierUnlocked = true;
 		}
 	}
 
-	public void sniperBonusDamage(bool[,] matrix, Tower tower){
-		if (matrix [3, 1]) {
-			tower.addBonusProjDamage(sniperDamageBonus);
-		}
-	}
 
 	public void sniperTier3(bool[,] matrix, Tower tower){
 		if (matrix [3, 2]) {

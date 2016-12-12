@@ -16,6 +16,7 @@ public class Gameover : MonoBehaviour {
 
 	//Reload level
 	public void Retry(){
+		Time.timeScale = 1f;
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 

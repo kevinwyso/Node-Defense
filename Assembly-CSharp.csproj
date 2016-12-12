@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\wave.cs" />
      <Compile Include="Assets\Scripts\waveSpawner.cs" />
      <Compile Include="Assets\Scripts\waypoints.cs" />
+     <Compile Include="Assets\aspectRatio.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Filed/Programs/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
