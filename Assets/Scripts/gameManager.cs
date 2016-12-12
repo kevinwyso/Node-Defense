@@ -33,8 +33,7 @@ public class gameManager : MonoBehaviour {
 
 		//Debug Statement
 		if(Input.GetKeyDown("e")){
-			gameStats.waves += 5000;
-			endGame();
+			playerStats.current.addExpPerDiff (5000);
 		}
 
 		//Debug Statement
