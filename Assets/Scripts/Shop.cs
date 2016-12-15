@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Shop : MonoBehaviour {
 
@@ -26,6 +28,18 @@ public class Shop : MonoBehaviour {
 			}
 			t.setCostLabel ();
 		}
+
+	}
+
+	void Update(){
+		if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad0))
+			selectTurretTower();
+		else if(Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad1))
+			selectRocketTower();
+		else if(Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad2))
+			selectLaserTower();
+		else if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad3))
+			selectSniperTower();
 
 	}
 
