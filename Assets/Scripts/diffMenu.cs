@@ -19,6 +19,9 @@ public class diffMenu : MonoBehaviour {
 	public Button start;
 	public Button medEnemy, medMap;
 	public Button hardEnemy, hardMap;
+	public Button tortureEnemy, tortureMap;
+	public Button hellEnemy, hellMap;
+	public Button impossibleEnemy, impossibleMap;
 
 	[Header ("Text")]
 	public Text bonusText;
@@ -62,6 +65,30 @@ public class diffMenu : MonoBehaviour {
 			medMap.interactable = false;
 			hardEnemy.interactable = false;
 			hardMap.interactable = false;
+		}
+
+		if (playerStats.current.getPrestige () >= tortureUnlock) {
+			tortureEnemy.interactable = true;
+			tortureMap.interactable = true;
+		} else {
+			tortureEnemy.interactable = false;
+			tortureMap.interactable = false;
+		}
+
+		if (playerStats.current.getPrestige () >= hellUnlock) {
+			hellEnemy.interactable = true;
+			hellMap.interactable = true;
+		} else {
+			hellEnemy.interactable = false;
+			hellMap.interactable = false;
+		}
+
+		if (playerStats.current.getPrestige () >= impossibleUnlock) {
+			impossibleEnemy.interactable = true;
+			impossibleMap.interactable = true;
+		} else {
+			impossibleEnemy.interactable = false;
+			impossibleMap.interactable = false;
 		}
 	}
 

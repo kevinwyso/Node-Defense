@@ -59,6 +59,12 @@ public class playerStats{
 	}
 	//End EXP Functions
 
+	//Prestige Functions
+
+	public int getPrestige(){
+		return prestiges;
+	}
+
 	//Skill Functions
 	void setSkillPoints(){
 		skillPointsTotal = level;
