@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\cameraController.cs" />
      <Compile Include="Assets\Scripts\debuff.cs" />
      <Compile Include="Assets\Scripts\diffMenu.cs" />
+     <Compile Include="Assets\Scripts\enemyGUI.cs" />
      <Compile Include="Assets\Scripts\enemyUpdate.cs" />
      <Compile Include="Assets\Scripts\gameManager.cs" />
      <Compile Include="Assets\Scripts\gameStats.cs" />

@@ -376,20 +376,20 @@ public class Enemy : MonoBehaviour {
 	}
 		
 	public float getSpeed(){
-		return baseSpeed + waveDeltaFn (deltaSpeed, speedWaves - gameStats.enemyDiffDelta);
+		return baseSpeed + waveDeltaFn (deltaSpeed * (gameStats.enemyDiffDelta / 2f), speedWaves); //Difficulty affects the speed less, don't want enemies moving TOO fast
 	}
 
 	public float getHealth(){
-		return baseHealth + waveDeltaFn (deltaHealth, healthWaves - gameStats.enemyDiffDelta);
+		return baseHealth + waveDeltaFn (deltaHealth * gameStats.enemyDiffDelta, healthWaves); //Difficulty affects health 1:1
 	}
 
 	public int getWorth(){
-		int w = (baseWorth + (int)waveDeltaFn((float)deltaWorth , worthWaves - gameStats.enemyDiffDelta));
+		int w = (baseWorth + (int)waveDeltaFn((float)deltaWorth * gameStats.enemyDiffDelta , worthWaves)); //Difficulty affects worth 1:1 
 		return  w + (int) (w * Mathf.Max(activeBuffs.enemyBonusPerc,activeBuffs.enemyBonusPercHigh));
 	}
 		
 	public float getResistStrength(){
-		return baseResistStrength + waveDeltaFn (deltaResistStrength, resistStrengthWaves - gameStats.enemyDiffDelta);
+		return Mathf.Clamp(baseResistStrength + waveDeltaFn (deltaResistStrength * gameStats.enemyDiffDelta, resistStrengthWaves), 0f, 0.90f); //Difficulty affects resists 1:1, resists should never be >= 90%
 	}
 
 	public int getNumResists(){
@@ -413,6 +413,22 @@ public class Enemy : MonoBehaviour {
 		float r = UnityEngine.Random.value;
 		//Debug.Log(UnityEngine.Random.value);
 		return r < chance;
+	}
+
+	public float CompareTo(Enemy other){
+		return this.distanceTravelled.CompareTo (other.distanceTravelled);
+	}
+
+	/*
+	* GUI FUNCTIONS
+	*/
+
+	void OnMouseDown(){
+		setTarget ();
+	}
+
+	void setTarget(){
+		enemyGUI.instance.setTarget (this);
 	}
 
 }

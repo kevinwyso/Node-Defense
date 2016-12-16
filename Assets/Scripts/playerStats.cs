@@ -9,7 +9,7 @@ public class playerStats{
 
 	public string saveName;
 
-	private int level = 0, exp = 0, skillPointsTotal = 0;
+	private int level = 0, exp = 0, skillPointsTotal = 0, prestiges = 0;
 	private int[] skillPointsAllocated;
 	private bool[,] buffsActive;
 
@@ -114,13 +114,13 @@ public class playerStats{
 	*/
 
 	//Function returns how much exp required for the next level up
-	//Each successive level has an increasing difference of 2
-	//     0, 1, 3, 6
-	//       1  2  3
-	//        1  1 
-	//Formula: 1/2n^2 - 1/2n = exp;
+	//Each successive level has an increasing difference of 0.5
+	//     0, 0.5, 1.5, 3
+	//       0.5  1  1.5
+	//         0.5 0.5 
+	//Formula: 1/4n^2 - 1/4n = exp;
 	public int getLevelFunction(){
-		return (int) Mathf.Floor((float)quadFormSolve(0.5f,-0.5f,-exp, true));
+		return (int) Mathf.Floor((float)quadFormSolve(0.25f,-0.25f,-exp, true));
 	}
 
 	//Solve a quadratic equation for finding the level 

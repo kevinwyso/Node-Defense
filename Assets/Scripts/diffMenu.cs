@@ -5,8 +5,15 @@ using System.Collections;
 
 public class diffMenu : MonoBehaviour {
 
+	public enum Difficulties {EASY, MEDIUM, HARD, TORTURE, HELL, IMPOSSIBLE} 
+
 	//Multiplier values for experience gains after a game ends
-	public static float easyEnemyMult = 0.6f, easyMapMult = 0.9f, medEnemyMult = 1f, medMapMult = 1f, hardEnemyMult = 1.3f, hardMapMult = 1.2f;
+	public static float easyEnemyMult = 0.6f, easyMapMult = 0.9f;
+	public static float medEnemyMult = 1f, medMapMult = 1f;
+	public static float hardEnemyMult = 1.3f, hardMapMult = 1.2f;
+	public static float tortureEnemyMult = 1.5f, tortureMapMult = 1.4f;
+	public static float hellEnemyMult = 1.7f, hellMapMult = 1.6f;
+	public static float impossibleEnemyMult = 2f, impossibleMapMult = 2f;
 
 	[Header ("Buttons")]
 	public Button start;
@@ -19,11 +26,14 @@ public class diffMenu : MonoBehaviour {
 	[Header ("Values")]
 	public int medUnlock;
 	public int hardUnlock;
+	public int tortureUnlock;
+	public int hellUnlock;
+	public int impossibleUnlock;
 
 	//private int bonusVal = ;
 
 	void Update(){
-
+		//Show experience bonus percentage
 		if (gameStats.enemyDiff >= 0 && gameStats.mapDiff >= 0)
 			bonusText.text = (gameStats.enemyDiff * gameStats.mapDiff * 100).ToString () + "%";
 		else

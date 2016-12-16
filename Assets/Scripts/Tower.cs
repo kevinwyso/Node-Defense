@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -254,26 +255,23 @@ public class Tower : MonoBehaviour {
 	//Shoot numTargets in range, if numTargets == -1 then shoot all targets
 	void Multishot(int numTargets){
 		int enemiesHit = 0;
-		Collider[] colliders = Physics.OverlapSphere (transform.position, range); //Get colliders in range
+		//Collider[] colliders = Physics.OverlapSphere (transform.position, range); //Get colliders in range
 
 		//If the numTargets is set to -1 then it should hit ALL targets in range
 		if (numTargets == -1)
-			numTargets = colliders.Length;
+			//numTargets = colliders.Length;
+			numTargets = enemyList.Count;
 
-		for(int i = 0; enemiesHit < numTargets && i < colliders.Length; i++){
-			//If collider is an enemy then spawn projectile for it and have it seek for its target
-			//TODO make sure the closest enemies are chosen for the multishot
-			if (colliders[i].tag == "Enemy") {
-				GameObject projectileGO = (GameObject)Instantiate (projectilePF, firePoint.position, firePoint.rotation); //GameObject of this projectile (GO = gameobject)
-				Projectile projectile = projectileGO.GetComponent<Projectile> (); //Get the Projectile script from this projectile
-				projectileGO.transform.SetParent (gameObject.transform); // Put the projectile as this towers child
+		for(int i = 0; enemiesHit < numTargets && i < enemyList.Count; i++){
+			GameObject projectileGO = (GameObject)Instantiate (projectilePF, firePoint.position, firePoint.rotation); //GameObject of this projectile (GO = gameobject)
+			Projectile projectile = projectileGO.GetComponent<Projectile> (); //Get the Projectile script from this projectile
+			projectileGO.transform.SetParent (gameObject.transform); // Put the projectile as this towers child
 
-				//Bullets seek target
-				if (projectile != null)
-					projectile.Seek (colliders[i].transform);
+			//Bullets seek target
+			if (projectile != null)
+				projectile.Seek (enemyList[i]); //Enemy list is sorted by furthest distance so just choose first i (furthest in order)
 
-				enemiesHit++; //Increment enemies hit so that we only iterate numTargets times
-			}
+			enemiesHit++; //Increment enemies hit so that we only iterate numTargets times
 		}
 
 		fireCountdown = 1f / fireRate; //Reset countdown for shot
@@ -384,19 +382,14 @@ public class Tower : MonoBehaviour {
 			
 		}
 
+
 		//Target selection
 		//Pick the target with the highest distance travelled (closest to end point)
 		if (enemyList.Count > 0 && !targetHighHealth) {
-			float highestDistance = Mathf.NegativeInfinity;
-			Transform highestDistanceTransform = null;
-			foreach (Transform t in enemyList) {
-				Enemy e = t.GetComponent<Enemy> ();
-				if (e.distanceTravelled > highestDistance) {
-					highestDistance = e.distanceTravelled;
-					highestDistanceTransform = t;
-				}
-			}
-			target = highestDistanceTransform;
+			//Order the list by Distance Travelled (Descending)
+			enemyList.OrderByDescending(x => x.GetComponent<Enemy>().distanceTravelled);
+
+			target = enemyList[0];
 		}
 		//Select the target with the highest hp (for snipers and for percent dmg towers)
 		else if (enemyList.Count > 0 && targetHighHealth) {
