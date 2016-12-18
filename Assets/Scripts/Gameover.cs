@@ -11,7 +11,10 @@ public class Gameover : MonoBehaviour {
 	//Set the number of waves reached in the gameover screen
 	void OnEnable(){
 		numWaves.text = waveSpawner.getLastWave().ToString();
-		expGained.text = Mathf.CeilToInt(waveSpawner.getLastWave() * gameStats.enemyDiff * gameStats.mapDiff).ToString ();
+		if (waveSpawner.getLastWave () != 1)
+			expGained.text = Mathf.CeilToInt (waveSpawner.getLastWave () * gameStats.enemyDiff * gameStats.mapDiff).ToString ();
+		else
+			expGained.text = "0";
 	}
 
 	//Reload level

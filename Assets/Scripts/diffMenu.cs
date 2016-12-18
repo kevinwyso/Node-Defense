@@ -50,19 +50,18 @@ public class diffMenu : MonoBehaviour {
 		}
 
 		//Unlocks medium and hard difficulties at certain levels
-		if (playerStats.current.getLevel () >= hardUnlock) {
+		if (playerStats.current.getLevel () >= medUnlock || playerStats.current.getPrestige() >= 1) {
 			medEnemy.interactable = true;
 			medMap.interactable = true;
-			hardEnemy.interactable = true;
-			hardMap.interactable = true;
-		} else if (playerStats.current.getLevel () >= medUnlock) {
-			medEnemy.interactable = true;
-			medMap.interactable = true;
-			hardEnemy.interactable = false;
-			hardMap.interactable = false;
 		} else {
 			medEnemy.interactable = false;
 			medMap.interactable = false;
+		}
+
+		if (playerStats.current.getLevel () >= hardUnlock || playerStats.current.getPrestige() >= 1) {
+			hardEnemy.interactable = true;
+			hardMap.interactable = true;
+		} else {
 			hardEnemy.interactable = false;
 			hardMap.interactable = false;
 		}

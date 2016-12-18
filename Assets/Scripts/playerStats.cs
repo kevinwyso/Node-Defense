@@ -13,13 +13,38 @@ public class playerStats{
 	private int[] skillPointsAllocated;
 	private bool[,] buffsActive;
 
-	public playerStats(string name, int _level, int _exp, int _skillPointsTotal, int[] _skillPointsAllocated, bool[,] _buffsActive){
+	public playerStats(string name, int _level, int _exp, int _skillPointsTotal, int[] _skillPointsAllocated, bool[,] _buffsActive, int _prestiges){
 		saveName = name;
 		level = _level;
 		exp = _exp;
 		skillPointsTotal = _skillPointsTotal;
 		skillPointsAllocated = _skillPointsAllocated;
 		buffsActive = _buffsActive;
+		prestiges = _prestiges;
+		current = this;
+	}
+
+	//New player, player stats
+	public playerStats(){
+		saveName = "New Player";
+		level = 0;
+		exp = 0;
+		skillPointsTotal = 0;
+		skillPointsAllocated = new int[] {0,0,0,0,0,0};
+		buffsActive = getEmptyBuffMatrix(6,6);
+		prestiges = 0;
+		current = this;
+	}
+
+	//Used for adding a prestige point
+	public playerStats(playerStats p){
+		saveName = p.saveName;
+		level = 0;
+		exp = 0;
+		skillPointsTotal = 0;
+		skillPointsAllocated = new int[] {0,0,0,0,0,0};
+		buffsActive = getEmptyBuffMatrix(6,6);
+		prestiges = p.prestiges + 1;
 		current = this;
 	}
 

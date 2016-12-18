@@ -17,6 +17,9 @@ public class mainMenu : MonoBehaviour {
 	[Header("Skill Screen")]
 	public GameObject skillUI;
 
+	[Header ("Prestige Screen")]
+	public GameObject prestigeUI;
+
 	[Header ("Difficulty Screen")]
 	public GameObject diffUI;
 
@@ -35,6 +38,7 @@ public class mainMenu : MonoBehaviour {
 	[Header ("Stat Texts")]
 	public Text levelText;
 	public Text expText;
+	public Text prestigeText;
 
 	[Header ("Other Setup")]
 	public GameObject cameraGO;
@@ -55,14 +59,16 @@ public class mainMenu : MonoBehaviour {
 
 		//If player has played a game using the New Player name without saving, show their stats, other wise they've just started the game and set their temp stats = to a new player
 		if(playerStats.current != null){
-			if (playerStats.current.getExp () == 0)
-				tempStats = new playerStats ("New Player", 0, 0, 0, new int[] { 0, 0, 0, 0, 0, 0 }, playerStats.getEmptyBuffMatrix (6, 6)); //When the user starts the game, set up a new player and allow them to load or save the current state
-			else {
+			/*if (playerStats.current.getExp () == 0){
+				print ("Here");
+				tempStats = new playerStats (); //When the user starts the game, set up a new player and allow them to load or save the current state
+			}
+			else {*/
 				showStats ();
 				setLoadText (playerStats.saveIndex);
-			}
+			//}
 		} else {
-				tempStats = new playerStats ("New Player", 0, 0, 0, new int[] {0,0,0,0,0,0}, playerStats.getEmptyBuffMatrix(6,6));
+				tempStats = new playerStats ();
 		}
 
 		InvokeRepeating("SlowUpdate", 0.1f, 2f); //Update the level of the user (but slowly)
@@ -110,13 +116,14 @@ public class mainMenu : MonoBehaviour {
 	public void setSave(string name){
 		//If the players stats are not null then this is a save file that came from a game that just started, load these stats
 		if(playerStats.current != null)
-			playerStats.current = new playerStats (name, playerStats.current.getLevelFunction (), playerStats.current.getExp (), playerStats.current.getSkillPoints(), playerStats.current.getSkillPointsUsed(), playerStats.current.getBuffMatrix());
+			playerStats.current = new playerStats (name, playerStats.current.getLevelFunction (), playerStats.current.getExp (), playerStats.current.getSkillPoints(), playerStats.current.getSkillPointsUsed(), playerStats.current.getBuffMatrix(), playerStats.current.getPrestige());
 		else
-			playerStats.current = new playerStats(name, tempStats.getLevelFunction(), tempStats.getLevelFunction(), tempStats.getSkillPoints(), tempStats.getSkillPointsUsed(), tempStats.getBuffMatrix());
+			playerStats.current = new playerStats(name, tempStats.getLevelFunction(), tempStats.getLevelFunction(), tempStats.getSkillPoints(), tempStats.getSkillPointsUsed(), tempStats.getBuffMatrix(), tempStats.getPrestige());
 		SaveLoad.Save (saveIndex); //Use the save index from the openSaveUI Setup to save this
 
 		closeSave ();
 		textToChange.text = "Load: " + playerStats.current.saveName;
+		showStats ();
 	}
 
 	//Load the game file at this index
@@ -133,7 +140,7 @@ public class mainMenu : MonoBehaviour {
 	//Delete the save file by putting a new game file in that slot
 	public void deleteSave(int index){
 		if (SaveLoad.savedGames.Count > index) {
-			SaveLoad.savedGames[index] = new playerStats ("New Player", 0, 0, 0, new int[] {0,0,0,0,0,0}, playerStats.getEmptyBuffMatrix(6,6));
+			SaveLoad.savedGames[index] = new playerStats ();
 			Load (index);
 			textToChange.text = "Load: " + playerStats.current.saveName; //Show the name in the appropriate load box
 		}
@@ -145,6 +152,7 @@ public class mainMenu : MonoBehaviour {
 			welcome.text = "Welcome, " + playerStats.current.saveName;
 			levelText.text = playerStats.current.getLevelFunction ().ToString();
 			expText.text = playerStats.current.getExp ().ToString();
+			prestigeText.text = playerStats.current.getPrestige().ToString ();
 		}
 	}
 
@@ -162,6 +170,19 @@ public class mainMenu : MonoBehaviour {
 		closeScreen (skillUI);
 		if(saveIndex >= 0)
 			setSave (playerStats.current.saveName); //Save upon leaving skill tree
+		
+	}
+
+	public void openPrestige(){
+		openScreen (prestigeUI);
+	}
+
+	public void closePrestige(){
+		closeScreen (prestigeUI);
+		if(saveIndex >= 0){
+			setSave (playerStats.current.saveName); //Save upon leaving skill tree
+			Load(playerStats.saveIndex);
+		}
 	}
 
 	public void openSave(){

@@ -36,16 +36,6 @@ public class gameManager : MonoBehaviour {
 			playerStats.current.addExpPerDiff (5000);
 		}
 
-		//Debug Statement
-		if(Input.GetKeyDown("p")){
-			if(Time.timeScale == 1.0f)
-				Time.timeScale *= 3f;
-		}
-
-		//Debug Statement
-		if(Input.GetKeyDown("o")){
-	
-		}
 
 		if (gameStats.lives <= 0) {
 			endGame ();
@@ -57,13 +47,13 @@ public class gameManager : MonoBehaviour {
 		gameEnded = true;
 		gameoverUI.SetActive(true);
 
-		//Save the players stats
 		playerStats.current.addExpPerDiff (waveSpawner.getLastWave());
 		playerStats.current.setLevel ();
 
 		//IF the player is using a saved file, save it at that index, if not, don't save
-		if(playerStats.saveIndex >= 0)
+		if (playerStats.saveIndex >= 0)
 			SaveLoad.Save (playerStats.saveIndex);
+
 	}
 		
 

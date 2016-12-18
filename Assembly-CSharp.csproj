@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\mainMenu.cs" />
      <Compile Include="Assets\Scripts\moneyUI.cs" />
      <Compile Include="Assets\Scripts\playerStats.cs" />
+     <Compile Include="Assets\Scripts\prestigeMenu.cs" />
      <Compile Include="Assets\Scripts\skillMenu.cs" />
      <Compile Include="Assets\Scripts\skillTree.cs" />
      <Compile Include="Assets\Scripts\towerBlueprint.cs" />

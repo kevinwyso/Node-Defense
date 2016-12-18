@@ -1,29 +1,29 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\diffMenu.cs">
     <Files>
       <File FileName="Assets\Scripts\mainMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tower.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BuildManager.cs" Line="37" Column="101" />
+      <File FileName="Assets\Scripts\Tower.cs" Line="273" Column="4" />
+      <File FileName="Assets\Scripts\BuildManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\gameManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\cameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\diffMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="422" Column="21" />
+      <File FileName="Assets\Scripts\diffMenu.cs" Line="78" Column="58" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="384" Column="3" />
       <File FileName="Assets\Scripts\enemyUpdate.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Gameover.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\playerStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\playerStats.cs" Line="67" Column="2" />
       <File FileName="Assets\Scripts\SaveLoad.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\waveSpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\gameStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\gameStats.cs" Line="34" Column="33" />
       <File FileName="Assets\Scripts\NodeUI.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Node.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\activeBuffs.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Shop.cs" Line="28" Column="5" />
+      <File FileName="Assets\Scripts\Shop.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\wave.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\skillMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets\aspectRatio.cs" Line="1" Column="1" />
-      <File FileName="Assets\enemyGUI.cs" Line="57" Column="3" />
+      <File FileName="Assets\Scripts\enemyGUI.cs" Line="52" Column="79" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
