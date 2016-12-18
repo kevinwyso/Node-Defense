@@ -380,11 +380,11 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public float getHealth(){
-		return baseHealth + waveDeltaFn (deltaHealth * gameStats.enemyDiffDelta, healthWaves); //Difficulty affects health 1:1
+		return (baseHealth  * gameStats.enemyDiffDelta) + waveDeltaFn (deltaHealth * gameStats.enemyDiffDelta, healthWaves); //Difficulty affects health 1:1
 	}
 
 	public int getWorth(){
-		int w = (baseWorth + (int)waveDeltaFn((float)deltaWorth * gameStats.enemyDiffDelta , worthWaves)); //Difficulty affects worth 1:1 
+		int w = (baseWorth + (int)waveDeltaFn((float)deltaWorth, worthWaves)); //Difficulty does not affect worth 
 		return  w + (int) (w * Mathf.Max(activeBuffs.enemyBonusPerc,activeBuffs.enemyBonusPercHigh));
 	}
 		
