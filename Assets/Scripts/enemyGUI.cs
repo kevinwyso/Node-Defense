@@ -49,7 +49,7 @@ public class enemyGUI : MonoBehaviour {
 	}
 
 	public void setHealth(){
-		health.text = target.health.ToString ("F2") + "/" + target.waveHealth.ToString ();
+		health.text = target.health.ToString ("F0");
 	}
 
 	public void setWorth(){
