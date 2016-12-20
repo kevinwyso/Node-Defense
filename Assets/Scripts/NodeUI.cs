@@ -9,6 +9,8 @@ public class NodeUI : MonoBehaviour {
 	[Header ("Setup")]
 	public GameObject main;
 	public GameObject ups;
+	public Button upgrade1;
+	public Button upgrade2;
 	[Header ("Buttons")]
 	public Button showUps;
 	public Button hideUps;
@@ -57,6 +59,8 @@ public class NodeUI : MonoBehaviour {
 		else
 			showUps.interactable = true;
 
+			
+
 		//Show the values for upgrading/selling the tower
 		costUp1Label.text = "$" + tower.upgradesTo1.cost;
 		costUp2Label.text = "$" + tower.upgradesTo2.cost;
@@ -66,6 +70,12 @@ public class NodeUI : MonoBehaviour {
 			sellForLabel.text = "\n$" + (int) Mathf.Ceil(tower.spentOnThisTower * 0.5f);
 		else
 			sellForLabel.text = "\n$" + (int) Mathf.Ceil(tower.spentOnThisTower * 0.75f);
+
+		//If there is no second upgrade, hide it
+		if (tower.upgradesTo2.cost == -1) {
+			upgrade2.interactable = false;
+			costUp2Label.text = "";
+		}
 
 		//Show tower's stats on the side
 		showStats(tower);
@@ -85,10 +95,10 @@ public class NodeUI : MonoBehaviour {
 		range.text = tower.range.ToString();
 
 		//If not a laser then show damage as flat not per second
-		if (!tower.isLaser) {
+		if (!tower.isLaser && !tower.isFire && !tower.isFireBurst) {
 			Projectile p = tower.projectilePF.GetComponent<Projectile> ();
 			//Depending on damage type, change the text to express this
-			float bonusDmg = (tower.getBonusProjDamage() * p.baseDamage);
+			float bonusDmg = (tower.getBonusProjDamage () * p.baseDamage);
 			if (p.damageOp == Projectile.DamageOp.FLAT)
 				damage.text = (p.damage + bonusDmg).ToString ();
 			else if (p.damageOp == Projectile.DamageOp.PERCENTCURR)
@@ -96,9 +106,12 @@ public class NodeUI : MonoBehaviour {
 			else if (p.damageOp == Projectile.DamageOp.PERCENTMAX)
 				damage.text = (p.damage + bonusDmg).ToString () + "%Max";
 			rof.text = tower.fireRate.ToString ();
-		}else{
-			damage.text = (tower.DOT + tower.bonusDOT).ToString() + "/sec";
-				rof.text = "DOT";
+		} else if (tower.isLaser) { //TODO
+			damage.text = (tower.DOT + tower.bonusDOT).ToString () + "/sec";
+			rof.text = "DOT";
+		} else if (tower.isFire || tower.isFireBurst) {
+			damage.text = (tower.fireDOT + tower.fireBonusDOT).ToString() + "/sec";
+			rof.text = "DOT";
 		}
 
 		//Show rest of stats which don't depend on anything else

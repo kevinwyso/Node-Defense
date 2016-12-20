@@ -54,8 +54,6 @@ public class BuildManager : MonoBehaviour {
 				towerToBuild = null;
 		}
 
-
-
 	}
 
 	//Called from the Shop, sets the tower to be ready to build

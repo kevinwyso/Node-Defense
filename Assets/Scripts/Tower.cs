@@ -52,6 +52,15 @@ public class Tower : MonoBehaviour {
 	public int targetsToPierce; //How many targets to pierce
 	public float falloff; //Falloff damage after a pierce
 
+	[Header ("For Firetower")]
+	public bool isFire;
+	public bool isFireBurst;
+	public GameObject fireLight;
+	public float fireDOT;
+	public float baseFireDOT;
+	public float fireBonusDOT;
+	public Projectile.DamageOp fireDamageOp;
+
 	[Header ("For Laser")]
 	public bool isLaser;
 	public float DOT; //Damage over time
@@ -61,7 +70,7 @@ public class Tower : MonoBehaviour {
 	public float AOE; //Radius for AoE slowing/dmg
 	public bool charges; //Does this laser use the charge mechanic
 	public float chargesBy; //How much does the laser charge by each second
-	public Projectile.DamageOp damageOp;
+	public Projectile.DamageOp laserDamageOp;
 
 	[Header ("Laser Effects Setup")]
 	public LineRenderer lineRenderer;
@@ -125,6 +134,8 @@ public class Tower : MonoBehaviour {
 					if(charges)
 						DOT = baseDOTCharging; //Reset damage for a charging laser
 				}
+			else if (isFire)
+				fireLight.SetActive (false); //Activate the graphics of the fire
 
 			fireCountdown -= Time.deltaTime; //Countdown is reduced by 1 per second even if there isn't a target
 			return;
@@ -139,9 +150,10 @@ public class Tower : MonoBehaviour {
 		//Check type of tower fire
 		if (isLaser) {
 			Laser ();
+		} else if (isFire) {
+			fireDamage ();
 		} else {//Algorithm to simulate fire rate
 			if (fireCountdown <= 0f) { //If the countdown reaches 0 then fire a new shot
-				
 				//Determine what type of tower is shooting and use that shot type
 				if (multishot)
 					Multishot (multiCount);
@@ -153,6 +165,8 @@ public class Tower : MonoBehaviour {
 					shotgunShot (shotgunBulletPF);
 				else if (pierces)
 					piercingShot ();
+				else if (isFireBurst)
+					fireDamage ();
 				else
 					Shoot ();
 			}
@@ -205,11 +219,11 @@ public class Tower : MonoBehaviour {
 		}
 
 		//Damage/Slow Enemy (based on damage type)
-		if (damageOp == Projectile.DamageOp.FLAT)
+		if (laserDamageOp == Projectile.DamageOp.FLAT)
 			e.takeDamage (damageToDeal * Time.deltaTime, damageType, this); //Have enemy take damage every second
-		else if (damageOp == Projectile.DamageOp.PERCENTCURR)
+		else if (laserDamageOp == Projectile.DamageOp.PERCENTCURR)
 			e.takeDamage (damageToDeal * e.health * Time.deltaTime, damageType, this);
-		else if (damageOp == Projectile.DamageOp.PERCENTMAX)
+		else if (laserDamageOp == Projectile.DamageOp.PERCENTMAX)
 			e.takeDamage (damageToDeal * e.waveHealth * Time.deltaTime, damageType, this);
 		
 	}
@@ -327,10 +341,41 @@ public class Tower : MonoBehaviour {
 		fireCountdown = 1f / fireRate;
 	}
 
+	void fireDamage(){
+		float damageToDeal = fireDOT + fireBonusDOT;
+
+		if (isFire)
+			fireLight.SetActive (true); //Activate the graphics of the fire
+		else {
+			fireLight.SetActive (true);
+			GameObject FL = (GameObject)Instantiate (fireLight, transform.position, transform.rotation); //GameObject of this projectile (GO = gameobject)
+			FL.transform.SetParent (gameObject.transform); // Put the projectile as this towers child
+			Destroy(FL, 0.3f);
+		}
+
+		//Get enemies in range
+		Collider[] colliders = Physics.OverlapSphere (transform.position, range);
+
+		foreach (Collider c in colliders) {
+			if (c.tag == "Enemy") {
+				if(fireDamageOp == Projectile.DamageOp.FLAT)
+					c.GetComponent<Enemy> ().takeDamage (damageToDeal * Time.deltaTime, damageType, this);
+				else if(fireDamageOp == Projectile.DamageOp.PERCENTCURR)
+					c.GetComponent<Enemy> ().takeDamage (damageToDeal * Time.deltaTime * c.GetComponent<Enemy>().health, damageType, this);
+				else if(fireDamageOp == Projectile.DamageOp.PERCENTMAX)
+					c.GetComponent<Enemy> ().takeDamage (damageToDeal * c.GetComponent<Enemy>().waveHealth, damageType, this);
+			}
+		}
+
+		if(fireRate > 0)
+			fireCountdown = 1f / fireRate;
+
+	}
+
 	//Rotate the tower to look at its target : REUSABLE
 	void rotateToLookAtTarget(bool lerp){
 		//Don't rotate if requiem tower
-		if (requiem)
+		if (requiem || isFire || isFireBurst)
 			return;
 		Vector3 dir = target.position - transform.position; //Get direction to target
 		Quaternion lookRotation = Quaternion.LookRotation(dir); //Get the Quaternion pertaining to looking in the direction found

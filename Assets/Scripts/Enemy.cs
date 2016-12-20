@@ -110,8 +110,8 @@ public class Enemy : MonoBehaviour {
 		//Which tower most recently hit this enemy, used to give kills
 		mostRecentlyHitBy = hitBy;
 
-		//Set isPenetrated = to false to it will add a stack of penetration
-		if(!hitBy.isLaser)
+		//Set isPenetrated = to false so it will add a stack of penetration
+		if(!hitBy.isLaser && !hitBy.isFire && !hitBy.isFireBurst)
 			if(hitBy.projectilePF.GetComponent<Projectile>().stacksPen)
 				isPentrated = false;
 
