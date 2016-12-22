@@ -36,7 +36,7 @@ public class playerStats{
 		current = this;
 	}
 
-	//Used for adding a prestige point
+	//Used for adding prestige points
 	public playerStats(playerStats p){
 		saveName = p.saveName;
 		level = 0;
@@ -44,7 +44,7 @@ public class playerStats{
 		skillPointsTotal = 0;
 		skillPointsAllocated = new int[] {0,0,0,0,0,0};
 		buffsActive = getEmptyBuffMatrix(6,6);
-		prestiges = p.prestiges + 1;
+		prestiges = Mathf.CeilToInt (((p.level - 70) / 2)); //For every 2 levels above 72 gain an additional skill point
 		current = this;
 	}
 
