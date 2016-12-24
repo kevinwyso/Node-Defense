@@ -31,6 +31,7 @@ public class Node : MonoBehaviour {
 
 	private Renderer rend; //Renderer to control color/skin/etc
 
+	public bool hasTower(){ return towerHere != null; } //Does the node have a tower
 
 	void Start(){
 		rend = GetComponent<Renderer> (); // Find/Set the renderer

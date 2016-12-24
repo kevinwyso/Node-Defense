@@ -59,6 +59,19 @@ public class activeBuffs : MonoBehaviour{
 	public static float luckyChanceHigh = 0.05f; //0.5% chance that kill will result in a lucky tier 2 bonus
 	public static float luckyChanceBonus = 1.5f; //Tier 1 bonus: 1.5*worth
 	public static float luckyChanceBonusHigh = 5f; //Tier 2 bonus: 5*worth
+	
+	[Header ("Prestige Bonus Damage Amounts")]
+	public float prestigeDMG1;
+	public float prestigeDMG2;
+	public float prestigeDMG3;
+
+	//New Tower Unlock Cutoffs Define what number of prestige points will unlock the new towers
+	public static int fireTowerUnlock = 6;
+	public static int starfireTowerUnlock = 36;
+	public static int nuclearTowerUnlock = 91;
+	public static int allegroTowerUnlock = 15;
+	public static int crescendoTowerUnlock = 55;
+	public static int fortissimioTowerUnlock = 120;
 
 	/*
 	HOW BUFF ACTIVATION WORKS
@@ -423,5 +436,58 @@ public class activeBuffs : MonoBehaviour{
 		}
 
 	}
+
+	public void activatePrestigeBuffs(Tower tower){
+		//Damage Buffs
+		applyPrestigeDMG1 (tower);
+		applyPrestigeDMG2 (tower);
+		applyPrestigeDMG3 (tower);
+	}
+
+	public void activateFireTowers(Tower tower){
+		fireTowerTier2 (tower);
+		fireTowerTier3 (tower);
+	}
+
+	public void activateAllegroTowers(Tower tower){
+		allegroTowerTier2 (tower);
+		allegroTowerTier3 (tower);
+	}
+
+	public void applyPrestigeDMG1(Tower tower){
+		if(playerStats.current.getPrestige() >= 1)
+			tower.addBonusProjDamage (prestigeDMG1);
+	}
+
+	public void applyPrestigeDMG2(Tower tower){
+		if(playerStats.current.getPrestige() >= 21)
+			tower.addBonusProjDamage (prestigeDMG2);
+	}
+
+	public void applyPrestigeDMG3(Tower tower){
+		if(playerStats.current.getPrestige() >= 66)
+			tower.addBonusProjDamage (prestigeDMG3);
+	}
+
+	public void fireTowerTier2(Tower tower){
+		if (tower.towerTier == 1)
+			tower.nextTierUnlocked = true;
+	}
+
+	public void fireTowerTier3(Tower tower){
+		if (tower.towerTier == 2)
+			tower.nextTierUnlocked = true;
+	}
+
+	public void allegroTowerTier2(Tower tower){
+		if (tower.towerTier == 1)
+			tower.nextTierUnlocked = true;
+	}
+
+	public void allegroTowerTier3(Tower tower){
+		if (tower.towerTier == 2)
+			tower.nextTierUnlocked = true;
+	}
+
 
 }

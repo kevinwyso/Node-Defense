@@ -29,9 +29,13 @@ public class diffMenu : MonoBehaviour {
 	[Header ("Values")]
 	public int medUnlock;
 	public int hardUnlock;
-	public int tortureUnlock;
-	public int hellUnlock;
-	public int impossibleUnlock;
+	[Space (10)]
+	public int tortureEnemyUnlock;
+	public int hellEnemyUnlock;
+	public int impossibleEnemyUnlock;
+	public int tortureMapUnlock;
+	public int hellMapUnlock;
+	public int impossibleMapUnlock;
 
 	//private int bonusVal = ;
 
@@ -65,30 +69,40 @@ public class diffMenu : MonoBehaviour {
 			hardEnemy.interactable = false;
 			hardMap.interactable = false;
 		}
-
-		if (playerStats.current.getPrestige () >= tortureUnlock) {
+			
+		if (playerStats.current.getPrestige () >= tortureEnemyUnlock) 
 			tortureEnemy.interactable = true;
-			tortureMap.interactable = true;
-		} else {
+		else 
 			tortureEnemy.interactable = false;
+		
+
+		if (playerStats.current.getPrestige () >= tortureMapUnlock)
+			tortureMap.interactable = true;
+		else
 			tortureMap.interactable = false;
-		}
 
-		if (playerStats.current.getPrestige () >= hellUnlock) {
+
+		if (playerStats.current.getPrestige () >= hellEnemyUnlock) 
 			hellEnemy.interactable = true;
-			hellMap.interactable = true;
-		} else {
+		else 
 			hellEnemy.interactable = false;
-			hellMap.interactable = false;
-		}
 
-		if (playerStats.current.getPrestige () >= impossibleUnlock) {
+
+		if (playerStats.current.getPrestige () >= hellMapUnlock)
+			hellMap.interactable = true;
+		else
+			hellMap.interactable = false;
+
+		if (playerStats.current.getPrestige () >= impossibleEnemyUnlock) 
 			impossibleEnemy.interactable = true;
-			impossibleMap.interactable = true;
-		} else {
+		else 
 			impossibleEnemy.interactable = false;
+
+
+		if (playerStats.current.getPrestige () >= impossibleMapUnlock)
+			impossibleMap.interactable = true;
+		else
 			impossibleMap.interactable = false;
-		}
 	}
 
 	public void startGame(){

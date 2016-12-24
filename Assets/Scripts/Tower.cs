@@ -22,6 +22,9 @@ public class Tower : MonoBehaviour {
 	public GameObject rangeIndicator; //Sphere to show rangeIndicator
 	public bool targetHighHealth; //Does this tower target enemies based on health?
 	public Resist.resistType damageType; //DamageTYpe of this tower (reduced by matching resistance)
+	[Space (10)]
+	public bool towerRotates;
+	public bool towerShoots;
 
 	//public Node onNode; //What node this tower is on
 
@@ -60,6 +63,15 @@ public class Tower : MonoBehaviour {
 	public float baseFireDOT;
 	public float fireBonusDOT;
 	public Projectile.DamageOp fireDamageOp;
+
+	[Header ("For Allegro")]
+	public bool isAllegro;
+	public bool isCrescendo;
+	public float buffAmount;
+	private float baseFireRate;
+	private float baseRange;
+
+	public Tower beenBuffedBy = null;
 
 	[Header ("For Laser")]
 	public bool isLaser;
@@ -102,13 +114,16 @@ public class Tower : MonoBehaviour {
 
 	void Start(){
 		InvokeRepeating ("updateTarget", 0f, 0.5f); // Last number is repeat rate (every x seconds), calls updateTarget every 0.5 seconds
-		rangeIndicator.transform.localScale = new Vector3(range*2, 0, range*2); //Change the scale of the rangeIndicator (multiply by 2 because scale is from the center of one axis)
+
+		if (isAllegro || isCrescendo)
+			InvokeRepeating ("updateBuffedTowers", 0.01f, 0.5f); //Repeat getting the list of towers for allegro towers every 1s
 
 		//If not a laser, setup the projectile 
 		if (projectilePF != null) { 
 			p = projectilePF.GetComponent<Projectile> ();
 			p.setTower (this);
 		}
+
 
 		//masterGO = GameObject.Find ("Game Master");
 		garbageGO = GameObject.Find ("Garbage");
@@ -117,12 +132,16 @@ public class Tower : MonoBehaviour {
 		foreach (debuff d in debuffs) {
 			d.appliedBy = this;
 		}
-		
+
+		baseFireRate = fireRate;
+		baseRange = range;
+
 		//activateSkills (aB, ); //Apply skills
 	}
 
 	// Called once per frame
 	void Update () {
+
 		//If no target, don't move or shoot
 		if (target == null) {
 			//if no target then disable lineRenderer
@@ -140,6 +159,9 @@ public class Tower : MonoBehaviour {
 			fireCountdown -= Time.deltaTime; //Countdown is reduced by 1 per second even if there isn't a target
 			return;
 		}
+
+		if (!towerShoots)
+			return;
 
 		//Look at target, don't use lerp as a shotgun or piercer or else you get weird looking bullet paths
 		if (shotgun || pierces)
@@ -372,11 +394,42 @@ public class Tower : MonoBehaviour {
 
 	}
 
+	void updateBuffedTowers(){
+		Collider[] colliders = Physics.OverlapSphere (transform.position, range);
+
+		foreach (Collider c in colliders) {
+			//If the collider is a tower, then buff it
+			if (c.GetComponent<Node>() != null) {
+				if (c.GetComponent<Node> ().hasTower()) {
+					Tower t = c.GetComponent<Node> ().t;
+					if (t.tag == "Allegro") //Don't buff other allegro towers/itself
+						continue;
+					if (isAllegro && t.beenBuffedBy == null && hasStrongerBuffThan(t)) {
+						t.fireRate = t.baseFireRate + (t.baseFireRate * buffAmount);
+						t.beenBuffedBy = this;
+					} else if (isCrescendo && t.beenBuffedBy == null && hasStrongerBuffThan(t)) {
+						t.fireRate = t.baseFireRate + (t.baseFireRate * buffAmount);
+						t.range = t.baseRange + (t.baseRange * buffAmount);
+						t.beenBuffedBy = this;
+					}
+				}
+			}
+		}
+	}
+
+	bool hasStrongerBuffThan(Tower t){
+		if (t.buffAmount > buffAmount)
+			return false;
+		else
+			return true;
+	}
+
 	//Rotate the tower to look at its target : REUSABLE
 	void rotateToLookAtTarget(bool lerp){
-		//Don't rotate if requiem tower
-		if (requiem || isFire || isFireBurst)
+		//Don't rotate if these towers, TODO: should add field for doesRotate
+		if (!towerRotates /*requiem || isFire || isFireBurst || isAllegro || isCrescendo*/)
 			return;
+		
 		Vector3 dir = target.position - transform.position; //Get direction to target
 		Quaternion lookRotation = Quaternion.LookRotation(dir); //Get the Quaternion pertaining to looking in the direction found
 		if(lerp){
@@ -405,6 +458,8 @@ public class Tower : MonoBehaviour {
 
 	//Search for target (Don't do this every frame)
 	void updateTarget(){
+		rangeIndicator.transform.localScale = new Vector3(range*2, 0, range*2); //Change the scale of the rangeIndicator (multiply by 2 because scale is from the center of one axis)
+
 		List<Collider> enemies = new List<Collider>(Physics.OverlapSphere (transform.position, range));
 
 		//Add any new enemies to the list
@@ -483,6 +538,10 @@ public class Tower : MonoBehaviour {
 			aB.applyLaserBuffs (this);
 		else if (gameObject.tag == "Sniper")
 			aB.applySniperBuffs (this);
+		else if (gameObject.tag == "Fire")
+			aB.activateFireTowers (this);
+		else if (gameObject.tag == "Allegro")
+			aB.activateAllegroTowers (this);
 
 		if (node.isSpecial) {
 			if (node.bonusRange)
@@ -490,7 +549,8 @@ public class Tower : MonoBehaviour {
 			if (node.bonusDamage)
 				specialNodeBonusDamage (node);
 		}
-			
+
+		aB.activatePrestigeBuffs (this);
 	}
 
 	//Set up default tower/projectile stats before applying skills

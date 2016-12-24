@@ -95,7 +95,7 @@ public class NodeUI : MonoBehaviour {
 		range.text = tower.range.ToString();
 
 		//If not a laser then show damage as flat not per second
-		if (!tower.isLaser && !tower.isFire && !tower.isFireBurst) {
+		if (!tower.isLaser && !tower.isFire && !tower.isFireBurst && !tower.isAllegro && !tower.isCrescendo) {
 			Projectile p = tower.projectilePF.GetComponent<Projectile> ();
 			//Depending on damage type, change the text to express this
 			float bonusDmg = (tower.getBonusProjDamage () * p.baseDamage);

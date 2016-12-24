@@ -12,6 +12,7 @@ public class Shop : MonoBehaviour {
 
 	[Header ("Prestige Towers")]
 	public GameObject fireButton;
+	public GameObject allegroButton;
 
 	private GameObject masterGO;
 	private activeBuffs aB;
@@ -22,8 +23,11 @@ public class Shop : MonoBehaviour {
 		aB = masterGO.GetComponent<activeBuffs> ();
 		buildManager = BuildManager.instance;
 
-		if (playerStats.current.getPrestige () <= 1)
+		if (playerStats.current.getPrestige () < 6)
 			fireButton.SetActive (false);
+
+		if (playerStats.current.getPrestige () < 15)
+			allegroButton.SetActive (false);
 
 		//Set labels in the shop for cost
 		foreach (towerBlueprint t in basicTowers) {
@@ -71,6 +75,10 @@ public class Shop : MonoBehaviour {
 
 	public void selectFireTower(){
 		buildManager.selectTowerToBuild (basicTowers [4]);
+	}
+
+	public void selectAllegroTower(){
+		buildManager.selectTowerToBuild (basicTowers [5]);
 	}
 
 }
