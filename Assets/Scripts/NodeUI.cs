@@ -48,6 +48,8 @@ public class NodeUI : MonoBehaviour {
 
 	//Set the target node for the UI to show up above, passed in from buildManager
 	public void setTarget(Node t){
+
+
 		target = t;
 		Tower tower = target.towerHere.GetComponent<Tower> (); //Tower component of tower on this node
 
@@ -75,6 +77,8 @@ public class NodeUI : MonoBehaviour {
 		if (tower.upgradesTo2.cost == -1) {
 			upgrade2.interactable = false;
 			costUp2Label.text = "";
+		} else {
+			upgrade2.interactable = true;
 		}
 
 		//Show tower's stats on the side

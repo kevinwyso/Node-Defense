@@ -15,6 +15,8 @@ public class prestigeMenu : MonoBehaviour {
 	public Color activeColor;
 	public Color inactiveColor;
 
+	private int levelsNeededToPrestige = 30;
+
 	//Sets up the texts automatically instead of having to input the texts manually
 	void Awake(){
 		Transform[] tempTexts = new Transform[prestigeGO.transform.childCount];
@@ -40,7 +42,7 @@ public class prestigeMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (playerStats.current.getLevel () >= 72)
+		if (playerStats.current.getLevel () >= levelsNeededToPrestige) //Only make the prestige button interactive if the player is above the required level
 			prestigeButton.interactable = true;
 		else
 			prestigeButton.interactable = false;

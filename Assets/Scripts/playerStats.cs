@@ -13,6 +13,8 @@ public class playerStats{
 	private int[] skillPointsAllocated;
 	private bool[,] buffsActive;
 
+	private int levelsToPrestige = 30, levelsForAdditionalPoints = 6;
+
 	public playerStats(string name, int _level, int _exp, int _skillPointsTotal, int[] _skillPointsAllocated, bool[,] _buffsActive, int _prestiges){
 		saveName = name;
 		level = _level;
@@ -44,7 +46,9 @@ public class playerStats{
 		skillPointsTotal = 0;
 		skillPointsAllocated = new int[] {0,0,0,0,0,0};
 		buffsActive = getEmptyBuffMatrix(6,6);
-		prestiges = Mathf.CeilToInt (((p.level - 70) / 2)); //For every 2 levels above 72 gain an additional skill point
+
+		//For every 'levelsForAdditionalPoints' levels above 'levelsToPrestige' gain an additional skill point
+		prestiges = p.prestiges + Mathf.FloorToInt (((p.level - (levelsToPrestige - levelsForAdditionalPoints)) / levelsForAdditionalPoints)); 
 		current = this;
 	}
 

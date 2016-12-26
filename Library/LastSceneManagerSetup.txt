@@ -2,3 +2,9 @@ sceneSetups:
 - path: Assets/Scenes/Main Menu.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Scenes/Hard Map.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/Torture Map.unity
+  isLoaded: 1
+  isActive: 0
