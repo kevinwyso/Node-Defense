@@ -76,6 +76,11 @@
      <Compile Include="Assets\Scripts\waveSpawner.cs" />
      <Compile Include="Assets\Scripts\waypoints.cs" />
      <Compile Include="Assets\aspectRatio.cs" />
+     <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
+     <Compile Include="Assets\dreamlo\dreamloLeaderBoard.cs" />
+     <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />
+     <Compile Include="Assets\leaderboardMenu.cs" />
+     <None Include="Assets\dreamlo\README_FIRST.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

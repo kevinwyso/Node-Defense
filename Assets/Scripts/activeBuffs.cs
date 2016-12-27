@@ -445,13 +445,17 @@ public class activeBuffs : MonoBehaviour{
 	}
 
 	public void activateFireTowers(Tower tower){
-		fireTowerTier2 (tower);
-		fireTowerTier3 (tower);
+		if(playerStats.current.getPrestige() >= 36)
+			fireTowerTier2 (tower);
+		if(playerStats.current.getPrestige() >= 91)
+			fireTowerTier3 (tower);
 	}
 
 	public void activateAllegroTowers(Tower tower){
-		allegroTowerTier2 (tower);
-		allegroTowerTier3 (tower);
+		if(playerStats.current.getPrestige() >= 55)
+			allegroTowerTier2 (tower);
+		if(playerStats.current.getPrestige() >= 120)
+			allegroTowerTier3 (tower);
 	}
 
 	public void applyPrestigeDMG1(Tower tower){

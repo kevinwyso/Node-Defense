@@ -117,5 +117,9 @@ Assets/Scripts/wave.cs
 Assets/Scripts/waveSpawner.cs
 Assets/Scripts/waypoints.cs
 Assets/aspectRatio.cs
+Assets/dreamlo/LeaderBoardSample.cs
+Assets/dreamlo/dreamloLeaderBoard.cs
+Assets/dreamlo/dreamloPromoCode.cs
+Assets/leaderboardMenu.cs
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"

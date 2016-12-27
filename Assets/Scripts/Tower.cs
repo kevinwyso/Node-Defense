@@ -145,16 +145,20 @@ public class Tower : MonoBehaviour {
 		//If no target, don't move or shoot
 		if (target == null) {
 			//if no target then disable lineRenderer
-			if (isLaser)
+			if (isLaser) {
+				
 				if (lineRenderer.enabled) {
 					lineRenderer.enabled = false;
 					impactEffect.Stop ();
 					impactLight.enabled = false;
-					if(charges)
+					if (charges)
 						DOT = baseDOTCharging; //Reset damage for a charging laser
 				}
-			else if (isFire)
+			}
+			if (isFire){
+				
 				fireLight.SetActive (false); //Activate the graphics of the fire
+			}
 
 			fireCountdown -= Time.deltaTime; //Countdown is reduced by 1 per second even if there isn't a target
 			return;

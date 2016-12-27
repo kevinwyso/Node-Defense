@@ -21,3 +21,26 @@ D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\
 D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\obj\Debug\Assembly-CSharp.dll
 D:\Filed\Programs\Unity\Projects\Make a Game - Tutorials\Tower Defense Practice\Tower Defense Test\obj\Debug\Assembly-CSharp.pdb
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Assembly-CSharp.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEditor.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.Analytics.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.Networking.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.UI.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Mono.Cecil.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Unity.SerializationLogic.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Unity.DataContract.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Unity.UNetWeaver.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Unity.CecilTools.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.xml
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEditor.xml
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.UI.xml
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.Networking.xml
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\Temp\bin\Debug\UnityEngine.Analytics.xml
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\obj\Debug\Assembly-CSharp.dll
+D:\Filed\Documents\Unity Projects w Git\Node Defense\Node-Defense\obj\Debug\Assembly-CSharp.pdb

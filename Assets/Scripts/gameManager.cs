@@ -12,6 +12,8 @@ public class gameManager : MonoBehaviour {
 	[HideInInspector]
 	public static bool gameEnded;
 
+	dreamloLeaderBoard leaderboard;
+
 	void Awake(){
 		Application.runInBackground = true; //Keep the game playing even if it loses focus
 
@@ -20,6 +22,7 @@ public class gameManager : MonoBehaviour {
 	}
 
 	void Start(){
+		this.leaderboard = dreamloLeaderBoard.GetSceneDreamloLeaderboard ();
 		//playerStats.current.printBuffs ();
 		gameObject.GetComponent<activeBuffs> ().applyEconBuffs (); //Apply econ buffs at start but after Node buffs (can't change gameStats before they are created)
 	}
@@ -54,6 +57,7 @@ public class gameManager : MonoBehaviour {
 		if (playerStats.saveIndex >= 0)
 			SaveLoad.Save (playerStats.saveIndex);
 
+		leaderboard.AddScore (playerStats.current.saveName, waveSpawner.getLastWave ());
 	}
 		
 

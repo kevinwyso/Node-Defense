@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿
+
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
@@ -59,14 +61,8 @@ public class mainMenu : MonoBehaviour {
 
 		//If player has played a game using the New Player name without saving, show their stats, other wise they've just started the game and set their temp stats = to a new player
 		if(playerStats.current != null){
-			/*if (playerStats.current.getExp () == 0){
-				print ("Here");
-				tempStats = new playerStats (); //When the user starts the game, set up a new player and allow them to load or save the current state
-			}
-			else {*/
 				showStats ();
 				setLoadText (playerStats.saveIndex);
-			//}
 		} else {
 				tempStats = new playerStats ();
 		}
